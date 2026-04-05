@@ -1,20 +1,14 @@
 <div align="center">
 
-# 🎧 Zapret Discord YouTube Linux 📺
+# Zapret Discord YouTube Linux (english translation)
 
-### Plug-And-Play адаптер для обхода замедления YouTube на Linux
+### A tool to bypass cencorship on Linux
 
-На базе стратегий [Flowseal](https://github.com/Flowseal/zapret-discord-youtube) и [zapret](https://github.com/bol-van/zapret) от bol-van
 
-**Проверено на:**
-Ubuntu 24.04 • Debian 12 • Arch Linux • Gentoo Linux
 
-[![Telegram Channel](https://img.shields.io/badge/Telegram-Канал-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/+oOPnF-TKMAIxMjg6)
-[![Telegram Chat](https://img.shields.io/badge/Telegram-Чат-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/+mPohxYQQdZoyMjRi)
 
-[![Boosty](https://img.shields.io/badge/Boosty-Сказать_спасибо-FF6154?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDI0QzE4LjYyNzQgMjQgMjQgMTguNjI3NCAyNCAxMkMyNCA1LjM3MjU4IDE4LjYyNzQgMCAxMiAwQzUuMzcyNTggMCAwIDUuMzcyNTggMCAxMkMwIDE4LjYyNzQgNS4zNzI1OCAyNCAxMiAyNFoiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=&logoColor=white)](https://boosty.to/sergeydigl3/about)
 
-[![GitHub stars](https://img.shields.io/github/stars/Sergeydigl3/zapret-discord-youtube-linux?style=social)](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/stargazers)
+
 [![GitHub forks](https://img.shields.io/github/forks/Sergeydigl3/zapret-discord-youtube-linux?style=social)](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/network/members)
 
 </div>
@@ -23,7 +17,7 @@ Ubuntu 24.04 • Debian 12 • Arch Linux • Gentoo Linux
 
 <div align="center">
 
-[Быстрый старт](#быстрый-старт) • [Использование](#использование) • [Автозагрузка](#автозагрузка) • [Поддержка](#поддержка-и-помощь)
+[Quick Start](#быстрый-старт) • [How to Use](#использование) • [Autostart](#автозагрузка) • [Support](#поддержка-и-помощь)
 
 
 </div>
