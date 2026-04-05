@@ -22,7 +22,7 @@
 
 </div>
 
-## Быстрый старт
+## Quick Start
 
 ```bash
 git clone https://github.com/Sergeydigl3/zapret-discord-youtube-linux.git
@@ -32,54 +32,50 @@ cd zapret-discord-youtube-linux
 ./service.sh
 ```
 
-Скрипт интерактивно предложит выбрать действие: запуск, управление сервисом или настройку конфигурации.
+The script will prompt you to select an action: start, manage the service, or configure settings.
 
-> 💡 **Работа без пароля:** `./service.sh setup-permissions` — настроит NOPASSWD для nft/nfqws
-
-> 💡 Что-то не работает? Сначала прочитайте раздел [Поддержка и помощь](#поддержка-и-помощь)
+>  **Passwordless operation:** `./service.sh setup-permissions` — configures NOPASSWD for nft/nfqws
 
 ---
 
-**Требования:**
-- Работает только с **nftables**
-- Поддерживаемые архитектуры: **x86_64, ARM, MIPS, и др** (автоматическое определение)
+**Requirements:**
+- Works only with **nftables**
+- Supported architectures: **x86_64, ARM, MIPS, etc.** (automatic detection)
 
 ---
 
-## О версиях
+## About versions
 
-Адаптер по умолчанию использует:
-- **nfqws**: v72.9 (рекомендованная версия, прописана в `src/lib/constants.sh` как `ZAPRET_RECOMMENDED_VERSION`)
-- **Стратегии**: [коммит cb9aed09449e1c51a9108c7989717c7c98a14301](https://github.com/Flowseal/zapret-discord-youtube/commit/cb9aed09449e1c51a9108c7989717c7c98a14301) (прописан в `src/lib/constants.sh` как `MAIN_REPO_REV`)
+The adapter uses the following by default:
+- **nfqws**: v72.9 (recommended version, defined in `src/lib/constants.sh` as `ZAPRET_RECOMMENDED_VERSION`)
+- **Strategies**: [commit cb9aed09449e1c51a9108c7989717c7c98a14301] (https://github.com/Flowseal/zapret-discord-youtube/commit/cb9aed09449e1c51a9108c7989717c7c98a14301) (defined in `src/lib/constants.sh` as `MAIN_REPO_REV`)
 
-Вы можете изменить версии:
-- Интерактивно: `./service.sh download-deps` (выбор из доступных версий)
-- Напрямую: `./service.sh download-deps -z v72.9 -s main`
-- В коде: отредактируйте константы в `src/lib/constants.sh`
+You can change the versions:
+- Interactively: `./service.sh download-deps` (select from available versions)
+- Directly: `./service.sh download-deps -z v72.9 -s main`
+- In the code: edit the constants in `src/lib/constants.sh`
 
-Если текущая версия не работает, попробуйте [стабильные релизы](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/releases).
-
-**Сторонние проекты:**
-- [Версия от Snowy-Fluffy](https://github.com/Snowy-Fluffy/zapret.installer)
-
+If the current version isn’t working, try the [stable releases](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/releases).
+**Third-party projects:**
+- [Version by Snowy-Fluffy](https://github.com/Snowy-Fluffy/zapret.installer)
 ---
 
-# Использование
+# Usage
 
-## Интерактивный режим
+## Interactive mode
 
 ```bash
 ./service.sh
 ```
 
-Меню предлагает:
-1. **Запустить** — интерактивный выбор интерфейса, gamefilter и стратегии, запуск в текущем терминале
-2. **Управление сервисом** — установка/удаление/перезапуск системного сервиса
-3. **Изменить конфигурацию** — редактирование `conf.env`
+The menu offers:
+1. **Run** — interactive selection of interface, gamefilter and bypass strategy; launch in the current terminal
+2. **Service management** — install/uninstall/restart the system service
+3. **Change configuration** — edit `conf.env`
 
-## Конфигурация (conf.env)
+## Configuration (conf.env)
 
-Создайте файл `conf.env`:
+Create a file called `conf.env`:
 
 ```bash
 strategy=general.bat
@@ -87,143 +83,141 @@ interface=enp0s3
 gamefilter=true
 ```
 
-## Управление через CLI
+## CLI Management
 
-### Основные команды
+### Basic Commands
 
 ```bash
-./service.sh --help  # показать справку по командам
+./service.sh --help  # display command help
 ```
 
-### Управление зависимостями
+### Dependency Management
 
 ```bash
-# Скачать nfqws и стратегии (интерактивный выбор версий)
+# Download nfqws and strategies (interactive version selection)
 ./service.sh download-deps
 
-# Скачать рекомендованные версии (неинтерактивно)
+# Download recommended versions (non-interactive)
 ./service.sh download-deps --default
 
-# Скачать конкретные версии
+# Download specific versions
 ./service.sh download-deps -z v72.9 -s main
 
-# Показать доступные стратегии
+# List available strategies
 ./service.sh strategy list
 ```
 
-### Запуск zapret
+### Running zapret
 
 ```bash
-# Интерактивный режим (запрос параметров)
+# Interactive mode (prompt for parameters)
 ./service.sh run
 
-# Загрузка из конфигурационного файла
+# Load from a configuration file
 ./service.sh run --config conf.env
 
-# Прямые параметры
+# Direct parameters
 ./service.sh run -s general.bat -i enp0s3
-./service.sh run -s general.bat -i enp0s3 -g  # с gamefilter
+./service.sh run -s general.bat -i enp0s3 -g  # with gamefilter
 ```
 
-### Управление системным сервисом
+### Managing the system service
 
 ```bash
-# Интерактивное меню управления сервисом
+# Interactive service management menu
 ./service.sh service
 
-# Установить и запустить сервис
+# Install and start the service
 ./service.sh service install
 
-# Показать статус
+# Show status
 ./service.sh service status
 
-# Запустить/остановить/перезапустить
+# Start/stop/restart
 ./service.sh service start
 ./service.sh service stop
 ./service.sh service restart
 
-# Удалить сервис
+# Remove service
 ./service.sh service remove
 ```
 
-### Управление конфигурацией
+### Configuration management
 
 ```bash
-# Показать текущую конфигурацию
+# Show current configuration
 ./service.sh config show
 
-# Интерактивное редактирование
+# Interactive editing
 ./service.sh config edit
 
-# Установить конфигурацию напрямую
+# Set configuration directly
 ./service.sh config set general.bat
-./service.sh config set general.bat enp0s3 -g  # с gamefilter
-./service.sh config set discord -n             # без перезапуска сервиса
+./service.sh config set general.bat enp0s3 -g  # with gamefilter
+./service.sh config set discord -n             # without restarting the service
 ```
 
-### Создание ярлыка в меню приложений
+### Creating a shortcut in the Applications menu
 
 ```bash
-# Создать ярлык в меню приложений (для GUI запуска)
+# Create a shortcut in the Applications menu (for GUI launch)
 ./service.sh desktop install
 
-# Удалить ярлык из меню приложений
+# Remove the shortcut from the Applications menu
 ./service.sh desktop remove
 ```
 
-После установки ярлыка вы сможете запустить zapret из меню приложений вашей системы (категория "Сеть" или "Система").
+Once the shortcut has been installed, you will be able to launch zapret from your system’s applications menu (under the ‘Network’ or ‘System’ category).
 
-### Утилиты
+### Utilities
 
 ```bash
-# Остановить nfqws и очистить nftables
+# Stop nfqws and flush nftables
 ./service.sh kill
 ```
 
 ---
 
-## Автоматический подбор стратегий
+## Automatic strategy selection
 
 ```bash
 ./auto_tune_youtube.sh
 ```
 
-Скрипт автоматически:
-1. Перебирает стратегии из `/custom-strategies` и `/zapret-latest` (начинающиеся на `general`)
-2. Тестирует доступ к YouTube
-3. Сохраняет результаты в `auto_tune_youtube_results.txt`
-4. Предлагает запустить или сохранить рабочую стратегию в `conf.env`
+The script automatically:
+1. Iterates through strategies in `/custom-strategies` and `/zapret-latest` (starting with `general`)
+2. Tests access to YouTube
+3. Saves the results to `auto_tune_youtube_results.txt`
+4. Offers to run or save a working strategy to `conf.env`
 
-> Функционал экспериментальный, достоверность не гарантирована
+> This feature is experimental; may not be reliable.
 
 ---
 
-## Автозагрузка (системный сервис)
+## Autostart (system service)
 
 ```bash
-# Через CLI
+# Via the CLI
 ./service.sh service install
 
-# Или через интерактивное меню
+# Or via the interactive menu
 ./service.sh
-# -> выбрать "2. Управление сервисом" -> "1. Установить и запустить сервис"
+# -> select ‘2. Service management’ -> ‘1. Install and start service’
 ```
 
-Скрипт:
-- Проверяет `conf.env` (если пустой — запросит параметры интерактивно)
-- Создаёт сервис для автозапуска (поддерживает systemd, OpenRC, runit, s6, dinit)
-- Использует значения из `conf.env`
+Script:
+- Checks `conf.env` (if empty, it will prompt for parameters interactively)
+- Creates a service for autostart (supports systemd, OpenRC, runit, s6, dinit)
+- Uses values from `conf.env`
 
 <details>
-<summary>Для systemd систем</summary>
-
-Просмотреть статус сервиса можно командой:
+<summary>For systemd systems</summary>
 
 ```bash
 systemctl status zapret_discord_youtube.service
 ```
 
-Посмотреть логи сервиса:
+View service logs:
 
 ```bash
 journalctl -u zapret_discord_youtube.service
@@ -232,15 +226,15 @@ journalctl -u zapret_discord_youtube.service
 </details>
 
 <details>
-<summary>Для OpenRC систем</summary>
+<summary>For OpenRC systems</summary>
 
-Просмотреть статус сервиса можно командой:
+You can view the service status using the command:
 
 ```bash
 rc-service zapret_discord_youtube status
 ```
 
-Посмотреть логи сервиса:
+View service logs:
 
 ```bash
 rc-service zapret_discord_youtube logs
@@ -249,15 +243,15 @@ rc-service zapret_discord_youtube logs
 </details>
 
 <details>
-<summary>Для runit систем</summary>
+<summary>For runit systems</summary>
 
-Просмотреть статус сервиса можно командой:
+You can view the service status using the command:
 
 ```bash
 sv status zapret_discord_youtube
 ```
 
-Посмотреть логи сервиса:
+View service logs:
 
 ```bash
 tail -f /var/log/zapret_discord_youtube/current
@@ -266,15 +260,15 @@ tail -f /var/log/zapret_discord_youtube/current
 </details>
 
 <details>
-<summary>Для s6 систем</summary>
+<summary>For s6 systems</summary>
 
-Просмотреть статус сервиса можно командой:
+You can view the service status using the command:
 
 ```bash
 s6-svstat /var/service/zapret_discord_youtube
 ```
 
-Посмотреть логи сервиса:
+View service logs:
 
 ```bash
 tail -f /var/log/zapret_discord_youtube/current
@@ -283,15 +277,15 @@ tail -f /var/log/zapret_discord_youtube/current
 </details>
 
 <details>
-<summary>Для dinit систем</summary>
+<summary>For dinit systems</summary>
 
-Просмотреть статус сервиса можно командой:
+You can view the service status using the command:
 
 ```bash
 dinitctl status zapret_discord_youtube
 ```
 
-Посмотреть логи сервиса:
+View the service logs:
 
 ```bash
 dinitctl log zapret_discord_youtube
@@ -301,46 +295,42 @@ dinitctl log zapret_discord_youtube
 
 ---
 
-## Поддержка и помощь
+## Support and help
 
 > [!IMPORTANT]
-> Это АДАПТЕР! Не гарантирует, что стратегии разблокируют всё.
+> This is an ADAPTER! It does not guarantee that the policies will unblock everything.
 
-### Если ничего не работает
+### If nothing works
 
-**Прежде чем создавать Issue или Discussion:**
+**Before creating an Issue or Discussion:**
 
-1. Посмотрите [Issues в репозитории со стратегиями](https://github.com/Flowseal/zapret-discord-youtube/issues) — возможно, проблема уже обсуждается там
-2. Попробуйте другие стратегии или воспользуйтесь [автоматическим подбором](#автоматический-подбор-стратегий)
-3. Проверьте [Discussions](https://github.com/Flowseal/zapret-discord-youtube/discussions) — там обсуждают рабочие решения
+1. Check the [Issues in the strategies repository](https://github.com/Flowseal/zapret-discord-youtube/issues) — the issue may already be discussed there
+2. Try other strategies or use [automatic selection](#automatic-strategy-selection)
+3. Check the [Discussions](https://github.com/Flowseal/zapret-discord-youtube/discussions) — working solutions are discussed there
 
-### Когда создавать Issue/Discussion у меня
+### When to create an Issue/Discussion
 
-**Когда писать в [Issues](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/issues):**
-- Ошибки в работе **скрипта адаптера**
-- Вопросы по работе **скрипта адаптера**
-- Предложение добавить стратегию в custom-strategies
+**When to post in [Issues](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/issues):**
+- Errors in the **adapter script**
+- Questions about the **adapter script**
+- Suggestions to add a strategy to custom-strategies
 
-**Когда писать в [Discussions](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/discussions):**
-- Не работает YouTube или другой сайт (после проверки репозитория Flowseal)
-- Поиск рабочих стратегий
-- Обмен опытом
+**When to post in [Discussions](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/discussions):**
+- YouTube or another website isn’t working (after checking the Flowseal repository)
+- Searching for working strategies
+- Sharing experiences
 
-**Pull Request приветствуются** (например, поддержка iptables)
-
----
-
-## Контрибьюторы
+## Contributors
 
 <div align="center">
 
-**Спасибо всем, кто улучшает проект!** 🎉
+**Thank you to everyone who helps improve the project!** 🎉
 
 <a href="https://github.com/Sergeydigl3/zapret-discord-youtube-linux/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=Sergeydigl3/zapret-discord-youtube-linux" alt="Contributors" />
 </a>
 
-Хотите видеть здесь свое имя? Сделайте [Pull Request](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/pulls)!
+Would you like to see your name here? Make a [Pull Request](https://github.com/Sergeydigl3/zapret-discord-youtube-linux/pulls)!
 
 </div>
 
